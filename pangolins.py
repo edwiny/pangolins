@@ -114,7 +114,7 @@ while not done:
     get_yes_no_answer("Think of an animal... Are you ready?")
     node = guess(root)
     if node.is_leaf():
-        yesno = get_yes_no_answer("Oh! Oh! I think I know what it is. Did you think of a ... {} ?".format(node.text))
+        yesno = get_yes_no_answer("Oh! Oh! I think I know what it is. Did you think of a... {} ?".format(node.text))
         if yesno == "y":
             points = points + 1
             print("1 extra point for me! I now have {} points.".format(points))
