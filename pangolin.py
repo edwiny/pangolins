@@ -10,7 +10,7 @@ class Node(object):
         self.no = None
 
     def is_leaf(self) -> bool:
-        if  self.yes == None  and self.no == None:
+        if self.yes == None and self.no == None:
             return True
         else:
             return False
@@ -18,7 +18,8 @@ class Node(object):
     def __str__(self):
         return self.text
 
-def get_yes_no_answer(question : str) -> str:
+
+def get_yes_no_answer(question: str) -> str:
     while True:
         print("{} [y/n] ".format(question))
         ans = sys.stdin.readline().strip()
@@ -27,6 +28,7 @@ def get_yes_no_answer(question : str) -> str:
         if ans == "y" or ans == "n":
             return ans
 
+# debug
 def print_node(node: Node, tag: str):
     print("===============================")
     print("= Node text: ({}) {}".format(tag, node.text))
@@ -95,9 +97,8 @@ def handle_wrong_guess(question: str, answer: str, current_node: Node) -> Node:
     parent.yes = new_question_node
 
     new_question_node.no = old_yes
-    new_question_node.yes =  Node(answer, new_question_node)
+    new_question_node.yes = Node(answer, new_question_node)
     return new_question_node
-
 
 
 root = None
@@ -106,10 +107,8 @@ points = 0
 
 # bootstrap the model cause I'm too lazy to handle the empty case
 root = Node("is it a mammal?", None)
-dog = Node("dog", root)
-root.yes = dog
-handle_wrong_guess("does it live in the ocean?", "dolphin", dog)
-
+root.yes = Node("Does it have scales?", root)
+root.yes.yes = Node("pangolin", root.yes)
 
 while not done:
     get_yes_no_answer("Think of an animal... Are you ready?")
