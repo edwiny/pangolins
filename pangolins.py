@@ -114,8 +114,7 @@ while not done:
     get_yes_no_answer("Think of an animal... Are you ready?")
     node = guess(root)
     if node.is_leaf():
-        print("Oh! Oh! I think I know what it is. Did you think of a {} ? [y/n]".format(node.text))
-        yesno = sys.stdin.readline().strip()
+        yesno = get_yes_no_answer("Oh! Oh! I think I know what it is. Did you think of a ... {} ?".format(node.text))
         if yesno == "y":
             points = points + 1
             print("1 extra point for me! I now have {} points.".format(points))
@@ -124,7 +123,7 @@ while not done:
     print("I give up! What is it???")
     new_animal_str = sys.stdin.readline().strip()
 
-    print('Give me a yes/no type question for which the answer would be yes for {}'.format(new_animal_str))
+    print('Give me a yes/no type question for which the answer would be yes for {}:'.format(new_animal_str))
     question = sys.stdin.readline().strip()
 
     if node.is_leaf():
@@ -134,9 +133,7 @@ while not done:
 
     print("I will try to remember a {}.".format(new_animal_str))
 
-    print("Would you like to go again? [y/n]:")
-    ans = sys.stdin.readline().strip()
-    if ans == "n":
+    if get_yes_no_answer("Would you like to go again?") == "n":
         done = True
 
 print("Thanks for playing!")

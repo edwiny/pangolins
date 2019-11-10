@@ -4,7 +4,7 @@ A guess-the-animal game on the command line.
 
 ## Installation
 
-No dependencies.
+Install python3.
 
 ## Running
 
