@@ -65,17 +65,17 @@ def guess(node: Node) -> Node:
     if node.is_leaf():
         return node
 
-    # print_node(node, "guess")
     yesno = get_yes_no_answer(node.text)
     if yesno == "y" and node.yes:
         return guess(node.yes)
     if yesno == "n" and node.no:
         return guess(node.no)
 
-    # else return the current node, not this may not be a leaf node
     return node
 
 
+# in this case the questioning has concluded on a "no" and we need to add a new
+# leaf question and answer.
 def handle_give_up(question: str, answer: str, current_node: Node) -> Node:
     question_node = Node(question, current_node)
     current_node.no = question_node
@@ -83,8 +83,8 @@ def handle_give_up(question: str, answer: str, current_node: Node) -> Node:
     return question_node
 
 
-# here we want to insert a new node between the parent and the current node
-# the current node needs to become the negative answer to the
+# here we want to insert a new node between the parent and the current node.
+# The current node needs to become the negative answer to the
 # new question.
 def handle_wrong_guess(question: str, answer: str, current_node: Node) -> Node:
     parent = current_node.parent
