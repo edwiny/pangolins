@@ -9,7 +9,7 @@ class Node:
 
 class Question(Node):
     def __init__(self, question: str):
-        self.text = question
+        self.text = question.replace("?", "")
         self.children = []
 
     def getText(self):
